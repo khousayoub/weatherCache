@@ -8,7 +8,7 @@ class WeatherControllerTest extends WebTestCase
     public function testWeatherEndpoint()
     {
         $client = static::createClient();
-        $client->request('GET', '/weather?latitude=52.52&longitude=13.41');
+        $client->request('GET', '/weather');
         
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
     }

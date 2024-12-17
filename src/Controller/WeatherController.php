@@ -30,7 +30,7 @@ class WeatherController extends AbstractController
 
         if (!$cacheItem->isHit()) {
             // Fetch and cache the data from the Open-Meteo API endpoint
-            $weatherData = $this->cache->get($cacheItem, function (ItemInterface $item) {
+            $weatherData = $this->cache->get($cacheKey, function (ItemInterface $item) {
                 // the result will disapear after 300 sec (5min)
                 $item->expiresAfter(300);
 
