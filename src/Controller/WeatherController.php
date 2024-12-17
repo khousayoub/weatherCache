@@ -22,7 +22,7 @@ class WeatherController extends AbstractController
     }
 
     #[Route('/weather', name: 'weather', methods: ['GET'])]
-    public function getWeather(Request $request): JsonResponse
+    public function getWeather(): JsonResponse
     {
         // Create the cache key
         $cacheKey = 'weather_data';
