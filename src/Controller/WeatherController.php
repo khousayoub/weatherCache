@@ -31,7 +31,10 @@ class WeatherController extends AbstractController
         $cacheKey = 'weather_data_'.$latitude.'_'.$longitude;
 
         // Fetch and cache the data from the Open-Meteo API endpoint
-        $weatherData = $this->cache->get($cacheKey, function ($latitude, $longitude) {
+        $weatherData = $this->cache->get($cacheKey, function ($item, $latitude, $longitude) {
+            // the result will disapear after 300 sec (5min)
+            $item->expiresAfter(300);
+            
             $url = "https://api.open-meteo.com/v1/forecast?latitude={$latitude}&longitude={$longitude}&current_weather=true&hourly=temperature_2m&forecast_days=1";
             
             // Error handling
